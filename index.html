@@ -1,387 +1,570 @@
+<!--
+FLUXO — PREMIUM FITNESS APP
+INDEX.HTML
+-->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-  />
-  <title>Fuel</title>
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
-  <style>
-    :root{
-      --bg:#050505;
-      --card:rgba(255,255,255,.06);
-      --border:rgba(255,255,255,.08);
-      --text:#ffffff;
-      --muted:#8d8d93;
-      --green:#8CFF9D;
-      --glass:blur(28px);
-      --radius:28px;
-    }
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      -webkit-tap-highlight-color:transparent;
-    }
-    html,
-    body{
-      width:100%;
-      min-height:100%;
-      background:var(--bg);
-      color:var(--text);
-      font-family:'Inter', sans-serif;
-      overflow-x:hidden;
-    }
-    body{
-      background:
-      radial-gradient(circle at top left, rgba(140,255,157,.12), transparent 25%),
-      radial-gradient(circle at bottom right, rgba(255,255,255,.05), transparent 25%),
-      #050505;
-      padding:28px 18px 120px;
-    }
-    .app{
-      max-width:520px;
-      margin:auto;
-    }
-    .top{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:30px;
-    }
-    .title{
-      display:flex;
-      flex-direction:column;
-      gap:6px;
-    }
-    .title h1{
-      font-family:'Bricolage Grotesque', sans-serif;
-      font-size:42px;
-      line-height:.9;
-      letter-spacing:-2px;
-      font-weight:800;
-    }
-    .title p{
-      color:var(--muted);
-      font-size:14px;
-    }
-    .profile{
-      width:54px;
-      height:54px;
-      border-radius:50%;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.08);
-      backdrop-filter:var(--glass);
-    }
-    .hero{
-      position:relative;
-      overflow:hidden;
-      border-radius:38px;
-      padding:28px;
-      margin-bottom:20px;
-      background:
-      linear-gradient(145deg,
-      rgba(255,255,255,.09),
-      rgba(255,255,255,.03));
-      border:1px solid rgba(255,255,255,.08);
-      backdrop-filter:blur(40px);
-      box-shadow:
-      0 10px 40px rgba(0,0,0,.35),
-      inset 0 1px 0 rgba(255,255,255,.08);
-    }
-    .hero::before{
-      content:'';
-      position:absolute;
-      width:220px;
-      height:220px;
-      border-radius:50%;
-      background:rgba(140,255,157,.15);
-      top:-80px;
-      right:-60px;
-      filter:blur(40px);
-    }
-    .hero small{
-      color:var(--muted);
-      font-size:13px;
-    }
-    .hero h2{
-      font-family:'Bricolage Grotesque', sans-serif;
-      font-size:72px;
-      line-height:1;
-      margin-top:8px;
-      letter-spacing:-4px;
-    }
-    .hero span{
-      font-size:18px;
-      color:#d1d1d6;
-    }
-    .progress{
-      margin-top:24px;
-    }
-    .progress-top{
-      display:flex;
-      justify-content:space-between;
-      margin-bottom:12px;
-      color:#d1d1d6;
-      font-size:14px;
-    }
-    .bar{
-      width:100%;
-      height:14px;
-      border-radius:999px;
-      background:rgba(255,255,255,.06);
-      overflow:hidden;
-    }
-    .bar div{
-      width:72%;
-      height:100%;
-      border-radius:999px;
-      background:
-      linear-gradient(
-      90deg,
-      #8CFF9D,
-      #D8FFE0
-      );
-      box-shadow:
-      0 0 20px rgba(140,255,157,.4);
-    }
-    .grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
-      margin-bottom:18px;
-    }
-    .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      backdrop-filter:var(--glass);
-      border-radius:30px;
-      padding:22px;
-    }
-    .card p{
-      color:var(--muted);
-      font-size:13px;
-      margin-bottom:10px;
-    }
-    .card h3{
-      font-family:'Bricolage Grotesque', sans-serif;
-      font-size:34px;
-      letter-spacing:-2px;
-    }
-    .section{
-      margin-top:22px;
-    }
-    .section-title{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:16px;
-    }
-    .section-title h4{
-      font-family:'Bricolage Grotesque', sans-serif;
-      font-size:28px;
-      letter-spacing:-1px;
-    }
-    .section-title span{
-      color:var(--muted);
-      font-size:14px;
-    }
-    .meal{
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.06);
-      border-radius:28px;
-      padding:20px;
-      margin-bottom:14px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      transition:.3s ease;
-    }
-    .meal:hover{
-      transform:translateY(-2px);
-      background:rgba(255,255,255,.06);
-    }
-    .meal-info{
-      display:flex;
-      flex-direction:column;
-      gap:5px;
-    }
-    .meal-info strong{
-      font-size:18px;
-      font-weight:600;
-    }
-    .meal-info span{
-      color:var(--muted);
-      font-size:13px;
-    }
-    .kcal{
-      font-family:'Bricolage Grotesque', sans-serif;
-      font-size:24px;
-    }
-    .shopping{
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
-    .shopping-item{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:18px;
-      border-radius:24px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.06);
-    }
-    .shopping-left{
-      display:flex;
-      align-items:center;
-      gap:14px;
-    }
-    .dot{
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      background:var(--green);
-      box-shadow:0 0 12px rgba(140,255,157,.7);
-    }
-    .shopping-left strong{
-      font-size:16px;
-    }
-    .shopping-item span{
-      color:var(--muted);
-      font-size:13px;
-    }
-    .nav{
-      position:fixed;
-      bottom:18px;
-      left:50%;
-      transform:translateX(-50%);
-      width:92%;
-      max-width:520px;
-      background:rgba(20,20,20,.7);
-      backdrop-filter:blur(30px);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:30px;
-      padding:14px;
-      display:flex;
-      justify-content:space-around;
-      z-index:999;
-    }
-    .nav button{
-      background:none;
-      border:none;
-      color:#7c7c82;
-      font-size:13px;
-      font-weight:600;
-      font-family:'Inter', sans-serif;
-    }
-    .nav button.active{
-      color:white;
-    }
-  </style>
+<meta charset="UTF-8" />
+<title>Fluxo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap"
+rel="stylesheet"
+/>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+:root{
+  --bg:#050505;
+  --card:rgba(255,255,255,.06);
+  --line:rgba(255,255,255,.08);
+  --text:#ffffff;
+  --soft:#8e8e93;
+  --green:#9CFFB0;
+  --blur:blur(24px);
+}
+@media (prefers-color-scheme: light){
+  :root{
+    --bg:#f3f3f5;
+    --card:rgba(255,255,255,.7);
+    --line:rgba(0,0,0,.05);
+    --text:#050505;
+    --soft:#666666;
+    --green:#00C951;
+  }
+}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+html,
+body{
+  width:100%;
+  min-height:100%;
+  overflow-x:hidden;
+  scroll-behavior:smooth;
+}
+body{
+  background:
+  radial-gradient(circle at top left, rgba(156,255,176,.08), transparent 30%),
+  radial-gradient(circle at bottom right, rgba(255,255,255,.04), transparent 30%),
+  var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  padding:26px 18px 140px;
+}
+.app{
+  width:100%;
+  max-width:540px;
+  margin:auto;
+}
+/* HEADER */
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-bottom:28px;
+}
+.top p{
+  color:var(--soft);
+  font-size:14px;
+  margin-bottom:6px;
+}
+.top h1{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:58px;
+  line-height:.9;
+  letter-spacing:-3px;
+}
+.profile{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  background:var(--card);
+  border:1px solid var(--line);
+  backdrop-filter:var(--blur);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.profile i{
+  width:22px;
+  height:22px;
+}
+/* HERO */
+.hero{
+  position:relative;
+  overflow:hidden;
+  border-radius:38px;
+  padding:30px;
+  margin-bottom:20px;
+  background:
+  linear-gradient(
+  145deg,
+  rgba(255,255,255,.09),
+  rgba(255,255,255,.03)
+  );
+  border:1px solid var(--line);
+  backdrop-filter:blur(40px);
+  box-shadow:
+  0 10px 40px rgba(0,0,0,.25);
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  background:rgba(156,255,176,.15);
+  top:-120px;
+  right:-80px;
+  filter:blur(50px);
+}
+.hero small{
+  color:var(--soft);
+  font-size:13px;
+}
+.hero h2{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:76px;
+  line-height:1;
+  letter-spacing:-4px;
+  margin-top:10px;
+}
+.hero h2 span{
+  font-size:22px;
+  color:var(--soft);
+}
+.progress{
+  margin-top:24px;
+}
+.progress-info{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:10px;
+  color:var(--soft);
+  font-size:14px;
+}
+.bar{
+  width:100%;
+  height:14px;
+  border-radius:999px;
+  overflow:hidden;
+  background:rgba(255,255,255,.06);
+}
+.bar div{
+  width:72%;
+  height:100%;
+  border-radius:999px;
+  background:
+  linear-gradient(
+  90deg,
+  #9CFFB0,
+  #DFFFF0
+  );
+  box-shadow:
+  0 0 18px rgba(156,255,176,.6);
+  animation:grow 1.2s ease;
+}
+@keyframes grow{
+  from{
+    width:0;
+  }
+  to{
+    width:72%;
+  }
+}
+/* STATS */
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-bottom:26px;
+}
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:30px;
+  padding:22px;
+  backdrop-filter:var(--blur);
+}
+.card-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
+}
+.card p{
+  color:var(--soft);
+  font-size:13px;
+}
+.card h3{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:34px;
+  letter-spacing:-2px;
+}
+.card i{
+  width:20px;
+  height:20px;
+  color:var(--green);
+}
+/* SECTIONS */
+.section{
+  margin-bottom:28px;
+}
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:16px;
+}
+.section-title h4{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:30px;
+  letter-spacing:-1px;
+}
+.section-title span{
+  color:var(--soft);
+  font-size:14px;
+}
+/* FORM */
+.form{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:30px;
+  padding:18px;
+  margin-bottom:18px;
+}
+.form input{
+  width:100%;
+  background:rgba(255,255,255,.04);
+  border:none;
+  border-radius:18px;
+  padding:16px;
+  color:var(--text);
+  margin-bottom:12px;
+  font-size:15px;
+}
+.form button{
+  width:100%;
+  border:none;
+  border-radius:18px;
+  padding:16px;
+  background:var(--green);
+  color:#050505;
+  font-weight:700;
+  font-size:15px;
+}
+/* MEALS */
+.meals{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.meal{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:28px;
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.meal-left{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.icon{
+  width:50px;
+  height:50px;
+  border-radius:18px;
+  background:rgba(255,255,255,.05);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.icon i{
+  width:20px;
+  height:20px;
+  color:var(--green);
+}
+.meal-info strong{
+  display:block;
+  margin-bottom:5px;
+  font-size:17px;
+}
+.meal-info p{
+  color:var(--soft);
+  font-size:13px;
+}
+.delete{
+  background:none;
+  border:none;
+  color:#ff6b6b;
+}
+.delete i{
+  width:18px;
+  height:18px;
+}
+/* SHOPPING */
+.shopping{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.item{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:24px;
+  padding:18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.item-left{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.checkbox{
+  width:20px;
+  height:20px;
+  border-radius:6px;
+  border:2px solid var(--green);
+}
+.item strong{
+  font-size:16px;
+}
+.item span{
+  color:var(--soft);
+  font-size:13px;
+}
+/* NAV */
+.nav{
+  position:fixed;
+  bottom:18px;
+  left:50%;
+  transform:translateX(-50%);
+  width:92%;
+  max-width:540px;
+  background:rgba(20,20,20,.7);
+  border:1px solid var(--line);
+  border-radius:30px;
+  padding:14px;
+  display:flex;
+  justify-content:space-around;
+  backdrop-filter:blur(30px);
+}
+.nav button{
+  background:none;
+  border:none;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  color:var(--soft);
+  font-size:11px;
+  font-weight:600;
+}
+.nav button i{
+  width:18px;
+  height:18px;
+}
+.nav .active{
+  color:var(--text);
+}
+</style>
 </head>
 <body>
-  <main class="app">
-<div class="top">
-  <div class="title">
-    <p>Seu progresso hoje</p>
-    <h1>Fuel</h1>
-  </div>
-  <div class="profile"></div>
+<main class="app">
+  <div class="top">
+<div>
+  <p>Seu progresso hoje</p>
+  <h1>Fluxo</h1>
 </div>
-<section class="hero">
-  <small>Calorias consumidas</small>
-  <h2>1.840 <span>kcal</span></h2>
-  <div class="progress">
-    <div class="progress-top">
-      <span>Meta diária</span>
-      <span>72%</span>
-    </div>
-    <div class="bar">
-      <div></div>
-    </div>
+<div class="profile">
+  <i data-lucide="user"></i>
+</div>
   </div>
-</section>
-<div class="grid">
-  <div class="card">
+  <section class="hero">
+<small>Calorias consumidas</small>
+<h2>
+  1.840
+  <span>kcal</span>
+</h2>
+<div class="progress">
+  <div class="progress-info">
+    <span>Meta diária</span>
+    <span>72%</span>
+  </div>
+  <div class="bar">
+    <div></div>
+  </div>
+</div>
+  </section>
+  <div class="grid">
+<div class="card">
+  <div class="card-top">
     <p>Proteína</p>
-    <h3>152g</h3>
+    <i data-lucide="beef"></i>
   </div>
-  <div class="card">
+  <h3>152g</h3>
+</div>
+<div class="card">
+  <div class="card-top">
     <p>Água</p>
-    <h3>3.1L</h3>
+    <i data-lucide="droplets"></i>
+  </div>
+  <h3>3.1L</h3>
+</div>
+  </div>
+  <section class="section">
+<div class="section-title">
+  <h4>Nova refeição</h4>
+  <span>Adicionar</span>
+</div>
+<div class="form">
+  <input
+  type="text"
+  id="mealName"
+  placeholder="Ex: Frango + arroz"
+  />
+  <input
+  type="text"
+  id="mealDesc"
+  placeholder="Descrição"
+  />
+  <button onclick="addMeal()">
+    Adicionar refeição
+  </button>
+</div>
+  </section>
+  <section class="section">
+<div class="section-title">
+  <h4>Refeições</h4>
+  <span>Hoje</span>
+</div>
+<div class="meals" id="meals"></div>
+  </section>
+  <section class="section">
+<div class="section-title">
+  <h4>Compras</h4>
+  <span>Objetivo</span>
+</div>
+<div class="shopping">
+  <div class="item">
+    <div class="item-left">
+      <div class="checkbox"></div>
+      <strong>Frango</strong>
+    </div>
+    <span>2kg</span>
+  </div>
+  <div class="item">
+    <div class="item-left">
+      <div class="checkbox"></div>
+      <strong>Ovos</strong>
+    </div>
+    <span>30 un.</span>
+  </div>
+  <div class="item">
+    <div class="item-left">
+      <div class="checkbox"></div>
+      <strong>Aveia</strong>
+    </div>
+    <span>1 pacote</span>
+  </div>
+  <div class="item">
+    <div class="item-left">
+      <div class="checkbox"></div>
+      <strong>Banana</strong>
+    </div>
+    <span>12 un.</span>
+  </div>
+  <div class="item">
+    <div class="item-left">
+      <div class="checkbox"></div>
+      <strong>Patinho</strong>
+    </div>
+    <span>1kg</span>
   </div>
 </div>
-<section class="section">
-  <div class="section-title">
-    <h4>Refeições</h4>
-    <span>Hoje</span>
-  </div>
-  <div class="meal">
-    <div class="meal-info">
-      <strong>Café da manhã</strong>
-      <span>Ovos + Banana + Aveia</span>
-    </div>
-    <div class="kcal">420</div>
-  </div>
-  <div class="meal">
-    <div class="meal-info">
-      <strong>Almoço</strong>
-      <span>Frango + Arroz + Feijão</span>
-    </div>
-    <div class="kcal">720</div>
-  </div>
-  <div class="meal">
-    <div class="meal-info">
-      <strong>Jantar</strong>
-      <span>Patinho + Legumes</span>
-    </div>
-    <div class="kcal">540</div>
-  </div>
-</section>
-<section class="section">
-  <div class="section-title">
-    <h4>Compras</h4>
-    <span>Essa semana</span>
-  </div>
-  <div class="shopping">
-    <div class="shopping-item">
-      <div class="shopping-left">
-        <div class="dot"></div>
-        <strong>Frango</strong>
+  </section>
+</main>
+<nav class="nav">
+  <button class="active">
+    <i data-lucide="house"></i>
+    Home
+  </button>
+  <button>
+    <i data-lucide="utensils"></i>
+    Dieta
+  </button>
+  <button>
+    <i data-lucide="shopping-bag"></i>
+    Compras
+  </button>
+  <button>
+    <i data-lucide="user"></i>
+    Perfil
+  </button>
+</nav>
+<script>
+lucide.createIcons();
+const mealsContainer = document.getElementById('meals');
+let meals = JSON.parse(localStorage.getItem('fluxoMeals')) || [];
+function renderMeals(){
+  mealsContainer.innerHTML = '';
+  meals.forEach((meal,index)=>{
+    mealsContainer.innerHTML += `
+      <div class="meal">
+        <div class="meal-left">
+          <div class="icon">
+            <i data-lucide="sparkles"></i>
+          </div>
+          <div class="meal-info">
+            <strong>${meal.name}</strong>
+            <p>${meal.desc}</p>
+          </div>
+        </div>
+        <button class="delete" onclick="deleteMeal(${index})">
+          <i data-lucide="trash-2"></i>
+        </button>
       </div>
-      <span>2kg</span>
-    </div>
-    <div class="shopping-item">
-      <div class="shopping-left">
-        <div class="dot"></div>
-        <strong>Ovos</strong>
-      </div>
-      <span>30 un.</span>
-    </div>
-    <div class="shopping-item">
-      <div class="shopping-left">
-        <div class="dot"></div>
-        <strong>Aveia</strong>
-      </div>
-      <span>1 pacote</span>
-    </div>
-  </div>
-</section>
-  </main>
-  <nav class="nav">
-<button class="active">Home</button>
-<button>Dieta</button>
-<button>Compras</button>
-<button>Perfil</button>
-  </nav>
+    `;
+  });
+  lucide.createIcons();
+}
+function addMeal(){
+  const name = document.getElementById('mealName').value;
+  const desc = document.getElementById('mealDesc').value;
+  if(!name || !desc){
+    return;
+  }
+  meals.push({
+    name,
+    desc
+  });
+  localStorage.setItem(
+    'fluxoMeals',
+    JSON.stringify(meals)
+  );
+  renderMeals();
+  document.getElementById('mealName').value = '';
+  document.getElementById('mealDesc').value = '';
+}
+function deleteMeal(index){
+  meals.splice(index,1);
+  localStorage.setItem(
+    'fluxoMeals',
+    JSON.stringify(meals)
+  );
+  renderMeals();
+}
+renderMeals();
+</script>
 </body>
 </html>
